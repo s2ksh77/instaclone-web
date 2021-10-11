@@ -1,3 +1,5 @@
+import { isLoggedInVar } from "../apollo";
+
 const Home = () => {
   return (
     <div>
