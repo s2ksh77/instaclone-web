@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import BaseBox from "../shared";
+import { BaseBox } from "../shared";
 
 const SBottomBox = styled(BaseBox)`
   padding: 20px 0px;

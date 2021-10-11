@@ -6,4 +6,7 @@ export const BaseBox = styled.div`
   width: 100%;
 `;
 
-export default BaseBox;
+export const FatLink = styled.span`
+  font-weight: 600;
+  color: rgb(142, 142, 142);
+`;

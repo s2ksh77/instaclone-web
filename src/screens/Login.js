@@ -27,7 +27,7 @@ const Login = () => {
         <form>
           <Input type="text" placeholder="Username" />
           <Input type="password" placeholder="password" />
-          <Button type="submit" placeholder="Log in" />
+          <Button type="submit" value="Log in" />
         </form>
         <Separator>
           <div></div>
@@ -39,7 +39,7 @@ const Login = () => {
           <span>Log in with Facebook</span>
         </FacebookLogin>
       </FormBox>
-      <BottomBox cta="Don't have an acocunt?" linkText="Sign up" link={routes.signUp} />
+      <BottomBox cta="Have an acocunt?" linkText="Log in" link={routes.signUp} />
     </AuthLayout>
   );
 };
