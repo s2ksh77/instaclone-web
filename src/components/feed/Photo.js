@@ -129,6 +129,7 @@ const Photo = ({ id, user, file, isLiked, likes, caption, commentNumber, comment
         </PhotoActions>
         <Likes>{likes === 1 ? '1 like' : `${likes} likes`}</Likes>
         <Comments
+          photoId={id}
           author={user.username}
           caption={caption}
           commentNumber={commentNumber}
@@ -146,7 +147,7 @@ Photo.propTypes = {
     username: PropTypes.string.isRequired,
   }),
   caption: PropTypes.string,
-  file: PropTypes.number.isRequired,
+  file: PropTypes.string.isRequired,
   isLiked: PropTypes.bool.isRequired,
   likes: PropTypes.number.isRequired,
 };
