@@ -11,6 +11,7 @@ import { faHeart as SolidHeart } from '@fortawesome/free-solid-svg-icons';
 import Avatar from '../Avatar';
 import styled from 'styled-components';
 import { useReactiveVar, gql, useQuery, useMutation } from '@apollo/client';
+import Comments from './Comments';
 
 const PhotoContainer = styled.div`
   background-color: white;
@@ -68,7 +69,7 @@ const TOGGLE_LIKE_MUTATION = gql`
   }
 `;
 
-const Photo = ({ id, user, file, isLiked, likes }) => {
+const Photo = ({ id, user, file, isLiked, likes, caption, commentNumber, comments }) => {
   const updateToggleLike = (cache, result) => {
     const {
       data: {
@@ -135,6 +136,12 @@ const Photo = ({ id, user, file, isLiked, likes }) => {
           </div>
         </PhotoActions>
         <Likes>{likes === 1 ? '1 like' : `${likes} likes`}</Likes>
+        <Comments
+          author={user.username}
+          caption={caption}
+          commentNumber={commentNumber}
+          comments={comments}
+        />
       </PhotoData>
     </PhotoContainer>
   );
@@ -146,6 +153,7 @@ Photo.propTypes = {
     avatar: PropTypes.string,
     username: PropTypes.string.isRequired,
   }),
+  caption: PropTypes.string,
   file: PropTypes.number.isRequired,
   isLiked: PropTypes.bool.isRequired,
   likes: PropTypes.number.isRequired,
