@@ -12,6 +12,7 @@ import Avatar from '../Avatar';
 import styled from 'styled-components';
 import { useReactiveVar, gql, useQuery, useMutation } from '@apollo/client';
 import Comments from './Comments';
+import { Link } from 'react-router-dom';
 
 const PhotoContainer = styled.div`
   background-color: white;
@@ -103,8 +104,12 @@ const Photo = ({ id, user, file, isLiked, likes, caption, commentNumber, comment
   return (
     <PhotoContainer key={id}>
       <PhotoHeader>
-        <Avatar url={user?.avatar} lg />
-        <Username>{user?.username}</Username>
+        <Link to={`/users/${user?.username}`}>
+          <Avatar url={user?.avatar} lg />
+        </Link>
+        <Link to={`/users/${user?.username}`}>
+          <Username>{user?.username}</Username>
+        </Link>
       </PhotoHeader>
       <PhotoFile src={file} />
       <PhotoData>

@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 export const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -17,18 +17,19 @@ export const GlobalStyles = createGlobalStyle`
   }
   a {
     text-decoration: none;
+    color: inherit;
   }
 `;
 
 export const LightTheme = {
-  accent: "#0095f6",
-  bgColor: "#FAFAFA",
-  fontColor: "rgb(38,38,38)",
-  borderColor: "rgb(219, 219, 219)",
+  accent: '#0095f6',
+  bgColor: '#FAFAFA',
+  fontColor: 'rgb(38,38,38)',
+  borderColor: 'rgb(219, 219, 219)',
 };
 
 export const DarkTheme = {
-  accent: "#0095f6",
-  fontColor: "lightgray",
-  bgColor: "#2c2c2c",
+  accent: '#0095f6',
+  fontColor: 'lightgray',
+  bgColor: '#2c2c2c',
 };
