@@ -10,7 +10,7 @@ import {
 import { faHeart as SolidHeart } from '@fortawesome/free-solid-svg-icons';
 import Avatar from '../Avatar';
 import styled from 'styled-components';
-import { useReactiveVar, gql, useQuery, useMutation } from '@apollo/client';
+import { useReactiveVar, gql, useMutation } from '@apollo/client';
 import Comments from './Comments';
 import { Link } from 'react-router-dom';
 
