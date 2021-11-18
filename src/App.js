@@ -9,7 +9,6 @@ import NotFound from './screens/NotFound';
 import { DarkTheme, GlobalStyles, LightTheme } from './styles';
 import routes from './routes';
 import { HelmetProvider } from 'react-helmet-async';
-import Header from './components/Header';
 import Layout from './components/Layout';
 import Profile from './screens/Profile';
 

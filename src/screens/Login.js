@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { faFacebookSquare, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
-import AuthLayout from "../components/auth/AuthLayout";
-import BottomBox from "../components/auth/BottomBox";
-import Button from "../components/auth/Button";
-import FormBox from "../components/auth/FormBox";
-import Input from "../components/auth/Input";
-import Separator from "../components/auth/Separator";
-import routes from "../routes";
-import PageTitle from "../components/PageTitle";
-import { useForm } from "react-hook-form";
-import FormError from "../components/auth/FormError";
-import { gql, useMutation } from "@apollo/client";
-import { logUserIn } from "../apollo";
-import { useLocation } from "react-router";
-import Notification from "../components/auth/Notification";
+import React from 'react';
+import { faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
+import AuthLayout from '../components/auth/AuthLayout';
+import BottomBox from '../components/auth/BottomBox';
+import Button from '../components/auth/Button';
+import FormBox from '../components/auth/FormBox';
+import Input from '../components/auth/Input';
+import Separator from '../components/auth/Separator';
+import routes from '../routes';
+import PageTitle from '../components/PageTitle';
+import { useForm } from 'react-hook-form';
+import FormError from '../components/auth/FormError';
+import { gql, useMutation } from '@apollo/client';
+import { logUserIn } from '../apollo';
+import { useLocation } from 'react-router';
+import Notification from '../components/auth/Notification';
 
 const FacebookLogin = styled.div`
   color: #385285;
@@ -37,19 +37,20 @@ const LOGIN_MUTATION = gql`
 
 const Login = () => {
   const location = useLocation();
-  const { register, watch, handleSubmit, formState, getValues, setError, clearErrors } =
-    useForm({
-      mode: "onChange",
+  const { register, handleSubmit, formState, getValues, setError, clearErrors } = useForm(
+    {
+      mode: 'onChange',
       defaultValues: {
-        username: location?.state?.username || "",
-        password: location?.state?.password || "",
+        username: location?.state?.username || '',
+        password: location?.state?.password || '',
       },
-    });
+    }
+  );
   const onCompleted = (data) => {
     const {
       login: { ok, error, token },
     } = data;
-    if (!ok) setError("result", { message: error });
+    if (!ok) setError('result', { message: error });
     if (token) logUserIn(token);
   };
   const [login, { loading }] = useMutation(LOGIN_MUTATION, { onCompleted });
@@ -64,7 +65,7 @@ const Login = () => {
     });
   };
   const clearLoginError = () => {
-    clearErrors("result");
+    clearErrors('result');
   };
 
   return (
@@ -77,11 +78,11 @@ const Login = () => {
         <Notification message={location?.state?.message}></Notification>
         <form onSubmit={handleSubmit(onSubmitValid)}>
           <Input
-            {...register("username", {
-              required: "Username is required",
+            {...register('username', {
+              required: 'Username is required',
               minLength: {
                 value: 5,
-                message: "Username should be longer than 5 chars.",
+                message: 'Username should be longer than 5 chars.',
               },
             })}
             onFocus={clearLoginError}
@@ -92,8 +93,8 @@ const Login = () => {
           />
           <FormError message={formState.errors?.username?.message} />
           <Input
-            {...register("password", {
-              required: "Password is required",
+            {...register('password', {
+              required: 'Password is required',
             })}
             onFocus={clearLoginError}
             name="password"
@@ -104,7 +105,7 @@ const Login = () => {
           <FormError message={formState.errors?.password?.message} />
           <Button
             type="submit"
-            value={loading ? "Loading..." : "Log in"}
+            value={loading ? 'Loading...' : 'Log in'}
             disabled={!formState.isValid || loading}
           />
           <FormError message={formState.errors?.result?.message} />

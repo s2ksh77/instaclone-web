@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { FatText } from '../shared';
 import Comment from './Comment';
 import { gql, useMutation } from '@apollo/client';
 import useUser from '../../hooks/useUser';

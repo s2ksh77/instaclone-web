@@ -1,19 +1,19 @@
-import { faFacebookSquare, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useForm } from "react-hook-form";
-import styled from "styled-components";
-import AuthLayout from "../components/auth/AuthLayout";
-import BottomBox from "../components/auth/BottomBox";
-import Button from "../components/auth/Button";
-import FormBox from "../components/auth/FormBox";
-import FormError from "../components/auth/FormError";
-import Input from "../components/auth/Input";
-import Separator from "../components/auth/Separator";
-import PageTitle from "../components/PageTitle";
-import { FatLink } from "../components/shared";
-import routes from "../routes";
-import { gql, useMutation } from "@apollo/client";
-import { useHistory } from "react-router";
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useForm } from 'react-hook-form';
+import styled from 'styled-components';
+import AuthLayout from '../components/auth/AuthLayout';
+import BottomBox from '../components/auth/BottomBox';
+import Button from '../components/auth/Button';
+import FormBox from '../components/auth/FormBox';
+import FormError from '../components/auth/FormError';
+import Input from '../components/auth/Input';
+import Separator from '../components/auth/Separator';
+import PageTitle from '../components/PageTitle';
+import { FatLink } from '../components/shared';
+import routes from '../routes';
+import { gql, useMutation } from '@apollo/client';
+import { useHistory } from 'react-router';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -50,19 +50,18 @@ const CREATE_ACCOUNT_MUTATION = gql`
 
 const SignUp = () => {
   const history = useHistory();
-  const { register, watch, handleSubmit, formState, getValues, setError, clearErrors } =
-    useForm({
-      mode: "onChange",
-    });
+  const { register, handleSubmit, formState, getValues } = useForm({
+    mode: 'onChange',
+  });
 
   const onCompleted = (data) => {
     const { username, password } = getValues();
     const {
-      createAccount: { ok, error },
+      createAccount: { ok },
     } = data;
     if (!ok) return;
     history.push(routes.home, {
-      message: "Account created. Please log in.",
+      message: 'Account created. Please log in.',
       username,
       password,
     });
@@ -88,18 +87,18 @@ const SignUp = () => {
           <Subtitle>Sign up to see photos and videos from your friends.</Subtitle>
         </HeaderContainer>
         <Button type="submit" value="Log in with Facebook" />
-        <Separator style={{ marginBottom: "10px" }}>
+        <Separator style={{ marginBottom: '10px' }}>
           <div></div>
           <span>Or</span>
           <div></div>
         </Separator>
-        <form onSubmit={handleSubmit(onSubmitValid)} style={{ marginTop: "10px" }}>
+        <form onSubmit={handleSubmit(onSubmitValid)} style={{ marginTop: '10px' }}>
           <Input
-            {...register("firstName", {
-              required: "First Name is required",
+            {...register('firstName', {
+              required: 'First Name is required',
               minLength: {
                 value: 5,
-                message: "Username should be longer than 5 chars.",
+                message: 'Username should be longer than 5 chars.',
               },
             })}
             name="firstName"
@@ -109,7 +108,7 @@ const SignUp = () => {
           />
           <FormError message={formState.errors?.firstName?.message} />
           <Input
-            {...register("lastName")}
+            {...register('lastName')}
             name="lastName"
             type="text"
             placeholder="Last Name"
@@ -117,8 +116,8 @@ const SignUp = () => {
           />
           <FormError message={formState.errors?.lastName?.message} />
           <Input
-            {...register("email", {
-              required: "Email is required",
+            {...register('email', {
+              required: 'Email is required',
             })}
             name="email"
             type="text"
@@ -127,8 +126,8 @@ const SignUp = () => {
           />
           <FormError message={formState.errors?.email?.message} />
           <Input
-            {...register("username", {
-              required: "Username is required",
+            {...register('username', {
+              required: 'Username is required',
             })}
             name="username"
             type="text"
@@ -137,8 +136,8 @@ const SignUp = () => {
           />
           <FormError message={formState.errors?.username?.message} />
           <Input
-            {...register("password", {
-              required: "Password is required",
+            {...register('password', {
+              required: 'Password is required',
             })}
             name="password"
             type="password"
@@ -148,7 +147,7 @@ const SignUp = () => {
           <FormError message={formState.errors?.password?.message} />
           <Button
             type="submit"
-            value={loading ? "Loading..." : "Sign Up"}
+            value={loading ? 'Loading...' : 'Sign Up'}
             disabled={!formState.isValid || loading}
           />
         </form>

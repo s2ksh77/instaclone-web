@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCompass, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faCompass } from '@fortawesome/free-regular-svg-icons';
 import { useReactiveVar } from '@apollo/client';
 import { isLoggedInVar } from '../apollo';
 import { Link } from 'react-router-dom';

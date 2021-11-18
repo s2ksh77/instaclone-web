@@ -1,6 +1,4 @@
-import { useHistory } from 'react-router';
-import { logUserOut } from '../apollo';
-import { useReactiveVar, gql, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import Photo from '../components/feed/Photo';
 import PageTitle from '../components/PageTitle';
 import { COMMENT_FRAGMENT, PHOTO_FRAGMENT } from '../fragments';
@@ -27,7 +25,6 @@ const FEED_QUERY = gql`
 
 const Home = () => {
   const { data } = useQuery(FEED_QUERY);
-  const history = useHistory();
   return (
     <div>
       <PageTitle title={'Home'} />

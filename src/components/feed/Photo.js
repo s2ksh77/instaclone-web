@@ -10,7 +10,7 @@ import {
 import { faHeart as SolidHeart } from '@fortawesome/free-solid-svg-icons';
 import Avatar from '../Avatar';
 import styled from 'styled-components';
-import { useReactiveVar, gql, useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import Comments from './Comments';
 import { Link } from 'react-router-dom';
 
@@ -95,7 +95,7 @@ const Photo = ({ id, user, file, isLiked, likes, caption, commentNumber, comment
       });
     }
   };
-  const [toggleLikeMutation, { loading }] = useMutation(TOGGLE_LIKE_MUTATION, {
+  const [toggleLikeMutation] = useMutation(TOGGLE_LIKE_MUTATION, {
     variables: {
       id,
     },
